@@ -45,6 +45,10 @@ def parse_specified_command_line_execution_params(parser):
         help='Current status [QPIGS]', action='store_true'
     )
     parser.add_argument(
+        '--settings', dest='settings', default=False,
+        help='Current settings [QPIRI]', action='store_true'
+    )
+    parser.add_argument(
         '--op-mode', dest='operation_mode', default=False,
         help='Shows the operation mode [QMOD]', action='store_true'
     )
@@ -141,7 +145,7 @@ def compose_raw_command_line_response(args, response):
 
 
 def compose_specified_command_line_response(args, response):
-    specified_cmds = ('status', 'operation_mode')
+    specified_cmds = ('status', 'operation_mode', 'settings')
 
     if not any(args.get(cmd, False) for cmd in specified_cmds):
         return response
